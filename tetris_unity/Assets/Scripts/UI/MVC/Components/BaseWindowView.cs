@@ -1,7 +1,11 @@
-namespace DefaultNamespace
+using UnityEngine;
+
+namespace UI.MVC.Components
 {
-    public class BaseWindowView : UnityEngine.MonoBehaviour
+    public abstract class BaseWindowView : MonoBehaviour
     {
-        
+        public virtual void Close()
+        {
+        }
     }
 }

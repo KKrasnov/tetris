@@ -1,7 +1,8 @@
 namespace Game.State
 {
-    public class GameStateType
+    public enum GameStateType
     {
-        
+        MainMenu,
+        Game
     }
 }
