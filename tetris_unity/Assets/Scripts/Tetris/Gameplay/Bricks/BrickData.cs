@@ -1,7 +1,7 @@
 using System;
-using UnityEngine;//shouldn't be here
+using UnityEngine; //shouldn't be here
 
-namespace Tetris.Bricks
+namespace Tetris.Gameplay.Bricks
 {
     [Serializable]
     public class BrickData

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Game.State
 {
-    public class GameStateManager
+    public class GameStateManager : IGameStateManager
     {
         private readonly IObserver<GameStateType> _stateChangeListener;
         private readonly Tuple<GameStateType, Func<GameState>>[] _stateFactory;

@@ -26,35 +26,35 @@ namespace Tetris.Dependencies
         public void ConfigureDependencies(DependencyResolver dependencies)
         {
             //configure state machine
-            GameStateManager gameStateManager = new GameStateManager(new[]
+            IGameStateManager gameStateManager = new GameStateManager(new[]
             {
                 new Tuple<GameStateType, Func<GameState>>(GameStateType.MainMenu,
                     () => new GameState(() =>
                     {
-                        dependencies.Resolve<UIManager>().OpenWindow(UIWindow.STRING_MAIN_MENU_WINDOW_ID);
+                        dependencies.Resolve<IUIManager>().OpenWindow(UIWindow.STRING_MAIN_MENU_WINDOW_ID);
                     }, () =>
                     {
-                        dependencies.Resolve<UIManager>().CloseWindow(UIWindow.STRING_MAIN_MENU_WINDOW_ID);
+                        dependencies.Resolve<IUIManager>().CloseWindow(UIWindow.STRING_MAIN_MENU_WINDOW_ID);
                     })),
                 new Tuple<GameStateType, Func<GameState>>(GameStateType.Game,
                     () => new GameState(() =>
                     {
-                        dependencies.Resolve<UIManager>().OpenWindow(UIWindow.STRING_GAME_WINDOW_ID);
+                        dependencies.Resolve<IUIManager>().OpenWindow(UIWindow.STRING_GAME_WINDOW_ID);
                     }, () =>
                     {
-                        dependencies.Resolve<UIManager>().CloseWindow(UIWindow.STRING_GAME_WINDOW_ID);
+                        dependencies.Resolve<IUIManager>().CloseWindow(UIWindow.STRING_GAME_WINDOW_ID);
                     })),
             }, new CompositeObserver<GameStateType>());
             
             LevelManager levelManager = new LevelManager(_levels, new CompositeObserver<LevelData>());
 
-            UIManager uiManager = new UIManager(_uiContainer, new Dictionary<string, UIWindowConfiguration>()
+            IUIManager uiManager = new UIManager(_uiContainer, new Dictionary<string, UIWindowConfiguration>()
             {
                 {
                     "MainMenu", new UIWindowConfiguration(
                         () => new MainMenuWindowController(),
                         () => new MainMenuWindowModel(
-                            dependencies.Resolve<GameStateManager>(), 
+                            dependencies.Resolve<IGameStateManager>(), 
                             dependencies.Resolve<LevelManager>()),
                         _mainMenuViewPrefab
                     )
@@ -68,8 +68,8 @@ namespace Tetris.Dependencies
                 }
             });
             
-            dependencies.Bind(gameStateManager);
-            dependencies.Bind(uiManager);
+            dependencies.Bind<IGameStateManager>(gameStateManager);
+            dependencies.Bind<IUIManager>(uiManager);
             dependencies.Bind(levelManager);
         }
     }

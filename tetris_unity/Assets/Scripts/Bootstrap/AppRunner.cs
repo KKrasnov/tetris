@@ -15,7 +15,7 @@ namespace Bootstrap
         public void ExecuteApplicationFlow()
         {
             //it shouldn't be here actually
-            _dependencies.Resolve<GameStateManager>().SetState(GameStateType.MainMenu);
+            _dependencies.Resolve<IGameStateManager>().SetState(GameStateType.MainMenu);
         }
     }
 }

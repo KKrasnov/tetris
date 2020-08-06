@@ -1,5 +1,5 @@
 using System;
-using Tetris.Bricks;
+using Tetris.Gameplay.Bricks;
 
 namespace Tetris.LevelManagement
 {

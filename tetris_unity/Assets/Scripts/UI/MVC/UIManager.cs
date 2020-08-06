@@ -9,7 +9,7 @@ namespace UI.MVC
     /// This manager is coupled to UnityEngine since I didn't want
     /// to bother separating views instantiation functionality. However, not an impossible task to do.
     /// </summary>
-    public class UIManager
+    public class UIManager : IUIManager
     {
         private readonly Dictionary<string, UIWindowConfiguration> _windowsMap;//ahh no time to perform proper mapping
 
@@ -39,6 +39,7 @@ namespace UI.MVC
         {
             var controller = _activeWindows[id];
             controller.Close();
+            controller.View.Close();
             DestroyWindowView(controller.View);
             _activeWindows.Remove(id);
         }

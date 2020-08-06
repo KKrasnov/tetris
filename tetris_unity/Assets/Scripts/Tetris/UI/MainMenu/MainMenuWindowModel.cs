@@ -5,7 +5,7 @@ namespace Tetris.UI.MainMenu
 {
     public class MainMenuWindowModel
     {
-        private readonly GameStateManager _gameStateManager;
+        private readonly IGameStateManager _gameStateManager;
         private readonly LevelManager _levelManager;
 
         public LevelData[] Levels => _levelManager.Levels;
@@ -22,7 +22,7 @@ namespace Tetris.UI.MainMenu
             set => _gameStateManager.SetState(value);
         }
 
-        public MainMenuWindowModel(GameStateManager gameStateManager, LevelManager levelManager)
+        public MainMenuWindowModel(IGameStateManager gameStateManager, LevelManager levelManager)
         {
             _gameStateManager = gameStateManager;
             _levelManager = levelManager;
