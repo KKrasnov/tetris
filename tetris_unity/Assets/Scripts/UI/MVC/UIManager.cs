@@ -46,10 +46,10 @@ namespace UI.MVC
         
         private BaseWindowView CreateWindowView(GameObject prefab)
         {
-            GameObject inst = GameObject.Instantiate(prefab);
-            inst.transform.SetParent(_windowsContainer.transform);
-            inst.transform.localPosition = Vector3.zero;
+            GameObject inst = GameObject.Instantiate(prefab, _windowsContainer.transform, true);
+            var rect = inst.GetComponent<RectTransform>();
             inst.transform.localScale = Vector3.one;
+            rect.offsetMax = rect.offsetMin = Vector2.zero;
             return inst.GetComponent<BaseWindowView>();
         }
 

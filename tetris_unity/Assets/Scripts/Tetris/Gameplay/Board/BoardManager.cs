@@ -8,12 +8,12 @@ namespace Tetris.Gameplay.Board
 
         public void CreateNewBoard()
         {
-            Board = new Board(new Cell?[10,20], this);
+            Board = new Board(new Cell?[10,15], this);
         }
 
         public void OnNext(BoardUpdatedParams value)
         {
-            throw new NotImplementedException();
+            //do nothing
         }
         
         public void OnCompleted()

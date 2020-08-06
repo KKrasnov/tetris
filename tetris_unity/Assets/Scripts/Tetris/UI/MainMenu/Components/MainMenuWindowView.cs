@@ -13,6 +13,11 @@ namespace Tetris.UI.MainMenu.Components
             _data = data;
         }
 
+        public void PlayPressed()
+        {
+            _data.PlayAction(_data.Levels[0].ID);
+        }
+
         public class Data
         {
             public LevelData[] Levels;

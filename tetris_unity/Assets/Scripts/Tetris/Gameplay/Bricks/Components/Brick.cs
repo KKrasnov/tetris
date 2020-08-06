@@ -8,6 +8,7 @@ namespace Tetris.Gameplay.Bricks.Components
 
         public BrickData Data => _data;
         
+        [HideInInspector]
         public Transform[] Blocks;
 
         public void Init(BrickData data, Transform[] blocks)

@@ -6,6 +6,11 @@ namespace Tetris.UI.Game
     {
         private IInputManager _inputManager;
 
+        public GameWindowModel(IInputManager inputManager)
+        {
+            _inputManager = inputManager;
+        }
+
         public void RegisterInput(InputType action)
         {
             _inputManager.Send(action);
